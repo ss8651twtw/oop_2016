@@ -138,8 +138,8 @@ void HugeInteger::Divide(const HugeInteger H1, const HugeInteger H2){
 	HugeInteger l,r;
 	char tmp[]="1";
 	l.setValue(tmp);
-	strcpy(s,H1.getValue());
-	r.setValue(s);
+	r.setValue(tmp);
+	r.Add(H1,r);
 	while(cmp(l.getValue(), r.getValue())){
 		HugeInteger mid,tmp;
 		tmp.Add(l, r);
