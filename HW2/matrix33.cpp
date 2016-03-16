@@ -80,14 +80,30 @@ matrix33 operator * (float f, const matrix33 &a){
 	matrix33 m(a.v1 * f, a.v2 * f, a.v3 * f);
 	return m;
 }
+matrix33 operator * (const matrix33 &a, const matrix33 &b){
+	matrix33 m,tmp(a);
+	tmp.invert();
+	m[0][0] = tmp.v1 * b.v1;
+	m[1][0] = tmp.v1 * b.v2;
+	m[2][0] = tmp.v1 * b.v3;
+	m[0][1] = tmp.v2 * b.v1;
+	m[1][1] = tmp.v2 * b.v2;
+	m[2][1] = tmp.v2 * b.v3;
+	m[0][2] = tmp.v3 * b.v1;
+	m[1][2] = tmp.v3 * b.v2;
+	m[2][2] = tmp.v3 * b.v3;
+	return m;
+}
 matrix33 operator / (const matrix33 &a, float f){
 	matrix33 m(a.v1 / f, a.v2 / f, a.v3 / f);
 	return m;
 }
 void matrix33::printMatrix(){
-	v1.printVector3();
-	v2.printVector3();
-	v3.printVector3();
+	matrix33 tmp(*this);
+	tmp.invert();
+	tmp.v1.printVector3();
+	tmp.v2.printVector3();
+	tmp.v3.printVector3();
 }
 matrix33 &matrix33::invert(){
 	matrix33 m = *this;

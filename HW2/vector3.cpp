@@ -63,11 +63,11 @@ vector3 operator - (const vector3 &a){
 	return v;
 }
 vector3 operator + (const vector3 &a, const vector3 &b){
-	vector3 v(a.x + b.x, a.x + b.x, a.x + b.x);
+	vector3 v(a.x + b.x, a.y + b.y, a.z + b.z);
 	return v;
 }
 vector3 operator - (const vector3 &a, const vector3 &b){
-	vector3 v(a.x - b.x, a.x - b.x, a.x - b.x);
+	vector3 v(a.x - b.x, a.y - b.y, a.z - b.z);
 	return v;
 }
 vector3 operator * (const vector3 &v, float f){
@@ -77,6 +77,9 @@ vector3 operator * (const vector3 &v, float f){
 vector3 operator * (float f, const vector3 &v){
 	vector3 tmp(v.x * f, v.y * f, v.z * f);
 	return tmp;
+}
+int operator * (const vector3 &a, const vector3 &b){
+	return a.x * b.x + a.y * b.y + a.z * b.z;
 }
 vector3 operator / (const vector3 &v, float f){
 	vector3 tmp(v.x / f, v.y / f, v.z / f);
@@ -91,5 +94,5 @@ float vector3::length() const{
 	return sqrt(x * x + y * y + z * z);
 }
 void vector3::printVector3() const{
-	cout << x << y << z << endl;
+	cout << x << " " << y << " " << z << endl;
 }
