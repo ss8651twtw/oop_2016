@@ -2,9 +2,38 @@
 #define _MATRIX33_H_
 #include "vector3.h"
 
-class matrix33 
+class matrix33
 {  
+public:
+	vector3 v1, v2, v3;
 
+public:
+	matrix33() {};
+	matrix33(vector3 inv1, vector3 inv2, vector3 inv3);
+	matrix33(const matrix33 &m);
+
+public:
+	vector3 &operator [] (unsigned int index);
+	const vector3 &operator [] (unsigned int index) const;
+	matrix33 &operator =  (const matrix33 &m);
+	matrix33 &operator += (const matrix33 &m);
+	matrix33 &operator -= (const matrix33 &m);
+	matrix33 &operator *= (float f);
+	matrix33 &operator /= (float f);
+	friend bool operator == (const matrix33 &a, const matrix33 &b);
+	friend bool operator != (const matrix33 &a, const matrix33 &b);
+	friend matrix33 operator - (const matrix33 &m);
+	friend matrix33 operator + (const matrix33 &a, const matrix33 &b);
+	friend matrix33 operator - (const matrix33 &a, const matrix33 &b);
+	friend matrix33 operator * (const matrix33 &m, float f);
+	friend matrix33 operator * (float f, const matrix33 &m);
+	friend matrix33 operator / (const matrix33 &m, float f);
+
+public:
+	void printMatrix();
+	matrix33 &invert();
+	matrix33 &identity();
+	int determinant();
 };
 
 #endif
