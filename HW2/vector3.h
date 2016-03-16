@@ -41,6 +41,7 @@ public:
 	friend vector3        operator - (const vector3 &a, const vector3 &b);
 	friend vector3        operator * (const vector3 &v, float f);
 	friend vector3        operator * (float f, const vector3 &v);
+	friend int            operator * (const vector3 &a, const vector3 &b);
 	friend vector3        operator / (const vector3 &v, float f);
 
  public:

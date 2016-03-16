@@ -10,24 +10,25 @@ public:
 public:
 	matrix33() {};
 	matrix33(vector3 inv1, vector3 inv2, vector3 inv3);
-	matrix33(const matrix33 &m);
+	matrix33(const matrix33 &a);
 
 public:
 	vector3 &operator [] (unsigned int index);
 	const vector3 &operator [] (unsigned int index) const;
-	matrix33 &operator =  (const matrix33 &m);
-	matrix33 &operator += (const matrix33 &m);
-	matrix33 &operator -= (const matrix33 &m);
+	matrix33 &operator =  (const matrix33 &a);
+	matrix33 &operator += (const matrix33 &a);
+	matrix33 &operator -= (const matrix33 &a);
 	matrix33 &operator *= (float f);
 	matrix33 &operator /= (float f);
 	friend bool operator == (const matrix33 &a, const matrix33 &b);
 	friend bool operator != (const matrix33 &a, const matrix33 &b);
-	friend matrix33 operator - (const matrix33 &m);
+	friend matrix33 operator - (const matrix33 &a);
 	friend matrix33 operator + (const matrix33 &a, const matrix33 &b);
 	friend matrix33 operator - (const matrix33 &a, const matrix33 &b);
-	friend matrix33 operator * (const matrix33 &m, float f);
-	friend matrix33 operator * (float f, const matrix33 &m);
-	friend matrix33 operator / (const matrix33 &m, float f);
+	friend matrix33 operator * (const matrix33 &a, float f);
+	friend matrix33 operator * (float f, const matrix33 &a);
+	friend matrix33 operator * (const matrix33 &a, const matrix33 &b);
+	friend matrix33 operator / (const matrix33 &a, float f);
 
 public:
 	void printMatrix();
