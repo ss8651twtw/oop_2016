@@ -55,12 +55,6 @@ int main()
 	mat1.printMatrix();
 	cout << endl;
 
-	cout << "----------\n";
-	matrix33 tmp = mat1;
-	tmp.invert();
-	tmp.printMatrix();
-	cout << "----------\n";
-
 	// correct answer: 1 3 1
 	//                 8 2 3
 	//                 4 5 6

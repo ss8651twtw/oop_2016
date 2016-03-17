@@ -1,4 +1,3 @@
-#include <iostream>
 #include "matrix33.h"
 using namespace std;
 matrix33::matrix33(vector3 inv1, vector3 inv2, vector3 inv3){
@@ -117,7 +116,7 @@ matrix33 &matrix33::invert(){
 	(*this)[2][0] = m[0][1] * m[1][2] - m[0][2] * m[1][1];
 	(*this)[2][1] = m[0][2] * m[1][0] - m[0][0] * m[1][2];
 	(*this)[2][2] = m[0][0] * m[1][1] - m[0][1] * m[1][0];
-	(*this) /= (*this).determinant();
+	(*this) /= m.determinant();
 	return *this;
 }
 matrix33 &matrix33::transpose(){
