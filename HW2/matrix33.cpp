@@ -82,7 +82,7 @@ matrix33 operator * (float f, const matrix33 &a){
 }
 matrix33 operator * (const matrix33 &a, const matrix33 &b){
 	matrix33 m,tmp(a);
-	tmp.invert();
+	tmp.transpose();
 	m[0][0] = tmp.v1 * b.v1;
 	m[1][0] = tmp.v1 * b.v2;
 	m[2][0] = tmp.v1 * b.v3;
@@ -100,12 +100,27 @@ matrix33 operator / (const matrix33 &a, float f){
 }
 void matrix33::printMatrix(){
 	matrix33 tmp(*this);
-	tmp.invert();
+	tmp.transpose();
 	tmp.v1.printVector3();
 	tmp.v2.printVector3();
 	tmp.v3.printVector3();
 }
 matrix33 &matrix33::invert(){
+	matrix33 m = *this;
+	m.transpose();
+	(*this)[0][0] = m[1][1] * m[2][2] - m[1][2] * m[2][1];
+	(*this)[0][1] = m[1][2] * m[2][0] - m[1][0] * m[2][2];
+	(*this)[0][2] = m[1][0] * m[2][1] - m[2][0] * m[1][1];
+	(*this)[1][0] = m[2][1] * m[0][2] - m[0][1] * m[2][2];
+	(*this)[1][1] = m[0][0] * m[2][2] - m[0][2] * m[2][0];
+	(*this)[1][2] = m[0][1] * m[2][0] - m[0][0] * m[2][1];
+	(*this)[2][0] = m[0][1] * m[1][2] - m[0][2] * m[1][1];
+	(*this)[2][1] = m[0][2] * m[1][0] - m[0][0] * m[1][2];
+	(*this)[2][2] = m[0][0] * m[1][1] - m[0][1] * m[1][0];
+	(*this) /= (*this).determinant();
+	return *this;
+}
+matrix33 &matrix33::transpose(){
 	matrix33 m = *this;
 	for(int i = 0; i < 3; i++)
 		for(int j = 0; j < 3; j++)
@@ -118,8 +133,8 @@ matrix33 &matrix33::identity(){
 	v3.set(0, 0, 1);
 	return *this;
 }
-int matrix33::determinant(){
-	int det = 0;
+float matrix33::determinant(){
+	float det = 0;
 	det += v1[0] * v2[1] * v3[2];
 	det += v1[2] * v2[0] * v3[1];
 	det += v1[1] * v2[2] * v3[0];

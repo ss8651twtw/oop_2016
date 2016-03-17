@@ -33,8 +33,9 @@ public:
 public:
 	void printMatrix();
 	matrix33 &invert();
+	matrix33 &transpose();
 	matrix33 &identity();
-	int determinant();
+	float determinant();
 };
 
 #endif
