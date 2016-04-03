@@ -1,12 +1,18 @@
-#include "date.h"
-#include <iostream>
-using namespace std;
+#include"date.h"
+#include<iostream>
+
 int main(){
-	short int y, m, d;
+	short int yr,mon,day;
+
+	//construct data
 	Date date;
-	cin >> y >> m >> d;
-	cout << date.getDate_data() << "\n";
-	date.setDate(y, m, d);
-	cout << date.getDate_data() << "\n";
-	date.showData();
+	std::cin>>yr>>mon>>day;
+	std::cout<<date.getDate_data()<<std::endl;
+	date.setDate(yr,mon,day);
+	
+	std::cout<<date.getDate_data()<<std::endl;
+	date.showDate();
+
+	return 0;
 }
+
