@@ -28,6 +28,7 @@ matrix33 &matrix33::operator =  (const matrix33 &m){
 	v1 = m.v1;
 	v2 = m.v2;
 	v3 = m.v3;
+	return *this;
 }
 matrix33 &matrix33::operator += (const matrix33 &m){
 	v1 += m.v1;
